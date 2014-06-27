@@ -16,6 +16,8 @@ The talks I give are never entirely my own. I have ideas, I may put them togethe
 
 - The presentation software, reveal.js is developed by Hakim El Hattab and is Copyright (C) 2014 Hakim El Hattab, http://hakim.se. You can obtain a copy yourself [from his github repo](https://github.com/hakimel/reveal.js).
 
+- I'm using the full-screen image plugin from Régis Behmo found here: https://github.com/regisb/reveal.js-fullscreen-img 
+
 ## License
 
 This work is licensed under a [Creative Commons Attribution 3.0 License](http://creativecommons.org/licenses/by/3.0/)
