@@ -112,13 +112,14 @@
 					</ul>
 				</section>
 				<section>
-					webpage pic
-					---
-					viewstate pic
-					---
-					viewstate 01
-
-					viewstate 02
+					<img src="resources/webpage01.png" class="stretch"/>
+				</section>
+				<section>
+					<img src="resources/viewstate01.png" class="stretch"/>
+				</section>
+				<section>
+					<img src="resources/viewstate02.png" class="stretch"/>
+					<img src="resources/viewstate03.png" class="stretch"/>
 				</section>
 				<section>
 					<h2>Command Text</h2>
@@ -142,37 +143,51 @@ del %APPDATA%\output.pdf
 					</pre>
 				</section>
 				<section>
-					---
-					##Mimic User Behavior
-					- Traffic Rates
-						- Monitor incoming/outgoing network traffic for X days
-						- Configure xfil to stay within X% of “normal”
-					- C2
-						- Exponential/randomized stand-down
-						- Only comm during periods of activity
-
-					---
-					##Mimic User Behavior 
-					- Target URLs
-						- Monitor outgoing web queries/URLs for X days
-						- Use similar domain names for malicious traffic
-						- Append similar/same query strings to malicious requests
-					---
-					##Hiding in Logs
-
-					v-client-5b.sjc.dropbox.com
-					snt-re3-9a.sjc.dropbox.com
-					yn-in-f125.1e100.net
-					l1.ycs.vip.dcb.yahoo.com
-					snt-re3-9a.sjc.drpbox.com
-					ip-69-31-29-228.nlayer.net
-					a23-47-20-211.deploy.static.akamaitechnologies.com
-					l3.ycs.vip.dcb.yahoo.com
-					ir2.fp.vip.bf1.yahoo.com
-					www.nbcnews.com.edgesuite.net
-					wac.946A.edgecastcdn.net
-					a2.twimg.com
-
+					<h2>Mimic User Behavior</h2>
+					<ul>
+						<li>Traffic Rates</li>
+						<ul>
+							<li>Monitor incoming/outgoing network traffic for X days</li>
+							<li>Configure xfil to stay within X% of “normal”</li>
+						</ul>
+						<li>C2</li>
+						<ul>
+							<li>Exponential/randomized stand-down</li>
+							<li>Only comm during periods of activity</li>
+						</ul>
+					</ul>
+				</section>
+				<section>
+					<h2>Mimic User Behavior</h2>
+					<ul>
+						<li>Target URLs</li>
+						<ul>
+							<li>Monitor outgoing web queries/URLs for X days</li>
+							<li>Use similar domain names for malicious traffic</li>
+							<li>Append similar/same query strings to malicious requests</li>
+						</ul>
+					</ul>
+				</section>
+				<section>
+					<h2>Hiding in Logs</h2>
+					<pre>
+						<code data-trim>
+v-client-5b.sjc.dropbox.com
+snt-re3-9a.sjc.dropbox.com
+yn-in-f125.1e100.net
+l1.ycs.vip.dcb.yahoo.com
+snt-re3-9a.sjc.drpbox.com
+ip-69-31-29-228.nlayer.net
+a23-47-20-211.deploy.static.akamaitechnologies.com
+l3.ycs.vip.dcb.yahoo.com
+ir2.fp.vip.bf1.yahoo.com
+www.nbcnews.com.edgesuite.net
+wac.946A.edgecastcdn.net
+a2.twimg.com
+						</code>
+					</pre>
+			    </section>
+			    <section>
 					---
 					##Other Hiding Techniques
 					- Office File content embedding
@@ -238,107 +253,23 @@ del %APPDATA%\output.pdf
 					Virus total 02
 					---
 					network overview
-					---
-					Attack Pattern 01
-					---
-					Attack Pattern 02
-					---
-					Attack Pattern 03
-					---
-					Attack Pattern 04
-					---
-					Client Compromise (Simple)
-					---
-					Client Compromise (Encoded &amp; SSL)
-					---
+
 					##Next Steps
 					- Know what you can and can’t see
 					- Consider implications of your monitoring strategy
 					- Behavior *must* play a role
 
-
-					##Questions/Contact
-
-					Rob Gillen
-
-					rob@gillenfamily.net
-
-					http://rob.gillenfamily.net
-
-					@argodev
-
 				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
 				<section>
-					<section data-background="#007777">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-				</section>
+					<h2>Questions/Contact</h2>
 
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Background Transitions</h2>
-					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
+					<p>Rob Gillen<br />
+						<a href="mailto:rob@gillenfamily.net">rob@gillenfamily.net</a><br />
+						<a href="http://rob.gillenfamily.net" target="_blank">http://rob.gillenfamily.net</a><br />
+						<a href="https://twitter.com/argodev" target="_blank">@argodev</a><br />
 					</p>
-				</section>
-
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Background Transition Override</h2>
-					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+					<p>&nbsp;</p>
+					<p class="buffer">This talk and related resources are available online: <a href="https://github.com/argodev/talks/" target="_blank">https://github.com/argodev/talks/</a></p>
 				</section>
 			</div>
 		</div>
@@ -355,10 +286,7 @@ function linkify( selector ) {
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
-
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
+				margin: 0.01,
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
