@@ -14,6 +14,8 @@
 		<link rel="stylesheet" href="css/fullscreen-img.css">
 		<style type="text/css">
 			p { text-align: left; }
+			p.center { text-align: center;}
+			p.buffer { margin-top: 20px;}
 		</style>
 		<script>
 			if( window.location.search.match( /print-pdf/gi ) ) {
@@ -32,39 +34,41 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<!--
-				<section fullscreen-img="resources/blacksheep.jpg" fullscreen-size="contain">
+				<section>
+					<h2>Hiding in Plain Sight</h2>
+					<br />
+					<p class="center buffer">Presented by <a href="http://rob.gillenfamily.net" target="_blank">Rob Gillen</a> / <a href="https://twitter.com/argodev" target="_blank">@argodev</a></p>
+					<p class="center buffer">This talk and related resources are available online: <a href="https://github.com/argodev/talks/" target="_blank">https://github.com/argodev/talks/</a></p>
 				</section>
-				-->
+				<section>
+					<h2>Disclaimer</h2>
+					<p>The content of this presentation represents my personal views and thoughts at the present time. I reserve the right to change my views and opinions at any time. This content is not endorsed by, or representative in any way of my employer nor is it intended to be a view into my work or a reflection on the type of work that I or my group performs. It is simply a hobby and personal interest and should be considered as such.</p>
+				</section>
+				<section data-background="resources/blacksheep.jpg">
+				</section>
+				<section>
+					<h2>HTDCS</H2>
+					<ul>
+						<li>Helpdesk Ticket Driven Cyber Security</li>
+					</ul>
+				</section>
+				<section>
+					<img src="resources/spikeGraph.png" style="height:auto; width:auto;"/>
+				</section>
+				<section>
+					<img src="resources/flatgraph.jpg" style="height:auto; width:auto;"/>
+				</section>
+				<section>
+					<h2>Overview</h2>
+					<ul>
+						<li>RAT Design</li>
+						<li>Encryption</li>
+						<li>Command/Control (C2)</li>
+						<li>AntiVirus</li>
+						<li>Behavior</li>
+					</ul>
+				</section>
 				<section data-markdown data-separator="---">
-					##Hiding in Plain Sight
-
-					Presented by [Rob Gillen](http://rob.gillenfamily.net) / [@argodev](http://twitter.com/argodev)
-					
-
-					This talk and related resources are available online: https://github.com/argodev/talks/
-
-					---
-
-					##Disclaimer
-
-					The content of this presentation represents my personal views and thoughts at the present time. I reserve the right to change my views and opinions at any time. This content is not endorsed by, or representative in any way of my employer nor is it intended to be a view into my work or a reflection on the type of work that I or my group performs. It is simply a hobby and personal interest and should be considered as such.
-					---
-					![Black Sheep](resources/blacksheep.jpg)
-					---
-					##HTDCS
-					- Helpdesk Ticket Driven Cyber Security
-					---
-					![Spike Graph](resources/spikeGraph.png)
-					---
-					![Flat Graph](resources/flatgraph.jpg)
-					---
-					##Overview
-					- RAT Design
-					- Encryption
-					- Command/Control (C2)
-					- AntiVirus
-					- Behavior
 					MANDIANT report
 					VERIZON report
 
@@ -331,7 +335,7 @@ function linkify( selector ) {
 				center: true,
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
 
 				// Parallax scrolling
 				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
