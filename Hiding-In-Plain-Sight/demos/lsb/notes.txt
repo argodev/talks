@@ -1,0 +1,9 @@
+Message Length: 456 bits
+
+Header Size: 32 bits
+
+(456 - normal)
+0000 0000 0000 0000 0000 0001 1100 1000
+
+456 - little-endian
+0001 0011 1000 0000 0000 0000 0000 0000

