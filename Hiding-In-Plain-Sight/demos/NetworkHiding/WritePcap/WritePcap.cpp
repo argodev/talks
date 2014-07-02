@@ -59,45 +59,32 @@ typedef struct ip_header{
 void packet_handler(u_char *param, const struct pcap_pkthdr *header, const u_char *pkt_data);
 
 int total = 0;
-array<bool, 24> message = { false };
+const int MESSAGE_LENGTH = 3;
+array<bool, MESSAGE_LENGTH * 8> message = { false };
 
 //int _tmain(int argc, _TCHAR* argv[])
 int main(int argc, char **argv)
 {
 	// hard-coded, bad-way to build up our message
 	// DO NOT DO IT THIS WAY
-	bitset<8> r('R');
-	bitset<8> o('o');
-	bitset<8> b('b');
+	string raw_message = "Rob";
+	cout << "Message to send: " << raw_message << endl;
+	cout << "Message Bits:    ";
 
-	// set the bits
-	for (int i = 0; i < 8; i++)
-	{ 
-		message[i] = r[i];		// R
-		message[i + 8] = o[i];	// o
-		message[i + 16] = b[i];	// b
+
+	for (int i = 0; i < MESSAGE_LENGTH; i++)
+	{
+		bitset<8> x(raw_message[i]);
+
+		for (int j = 0; j < 8; j++)
+		{
+			message[j + (8 * i)] = x[j];
+		}
+
+		cout << x << " ";
 	}
-
-	//cout << "Rob: " << message.size() << endl;
-
-	//// pretty-print bool array
-	//for (int i = 0; i < message.size(); i++)
-	//{
-	//	if (message[i])
-	//	{
-	//		cout << 1;
-	//	}
-	//	else
-	//	{
-	//		cout << 0;
-	//	}
-	//}
-
-	//cout << endl;
-
-
-	//return 0;
-
+	
+	cout << endl << endl;
 
 	pcap_t *fp;
 	pcap_dumper_t *dumpfile;
@@ -133,7 +120,6 @@ int main(int argc, char **argv)
 
 	pcap_close(fp);
 
-	cout << "Total of " << total << " packets." << endl;
 	return 0;
 }
 
@@ -156,18 +142,17 @@ void packet_handler(u_char *dumpfile, const struct pcap_pkthdr *header, const u_
 		s_b4 = (unsigned int)ih->saddr.byte4;
 
 		// if the traffic is originating from our "sender"...
+		// NOTE: this is the wront way to do this! In our example, traffic is 
+		// b/t 10.10.10.23 and 10.10.22. This is a lame way to focus on just what
+		// is coming from 10.10.10.22
 		if (s_b4 == 22)
 		{
 			if (total < message.size())
 			{
-				cout << "I should set the MSB as follows: " << message[total] << endl;
-				printf("TTL : %d\n", (unsigned int)ih->ttl);
-
 				// we are going to cheat here. Our client was setting outbound packets
 				// with a TTL of 128 on all of them. We will simply set the TTL to either
 				// 255 or 127 based on our MSB value (not using bit-math here)
 				ih->ttl = (message[total]) ? 255 : 127;
-				printf("TTL : %d\n", (unsigned int)ih->ttl);
 			}
 
 			++total;

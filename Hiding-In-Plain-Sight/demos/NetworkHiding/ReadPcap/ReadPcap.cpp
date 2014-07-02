@@ -59,7 +59,8 @@ typedef struct ip_header{
 void packet_handler(u_char *param, const struct pcap_pkthdr *header, const u_char *pkt_data);
 
 int total = 0;
-array<bool, 24> message = { false };
+const int MESSAGE_LENGTH = 3;
+array<bool, MESSAGE_LENGTH*8> message = { false };
 
 //int _tmain(int argc, _TCHAR* argv[])
 int main(int argc, char **argv)
@@ -87,24 +88,29 @@ int main(int argc, char **argv)
 
 	pcap_close(fp);
 
-	// OK, now can we re-assemble our message?
-	bitset<8> a1;
-	bitset<8> a2;
-	bitset<8> a3;
-
-	// set the bits
-	for (int i = 0; i < 8; i++)
+	// now that we've processed our PCAP, let's see if we can reassemble our message
+	char raw_message[MESSAGE_LENGTH + 1];
+	cout << "Message Bits:     ";
+	// let's do it one 8-bit char at a time
+	for (int i = 0; i < MESSAGE_LENGTH; i++)
 	{
-		a1.set(i, message[i]);
-		a2.set(i, message[i + 8]);
-		a3.set(i, message[i + 16]);
+		bitset<8> x;
+
+		for (int j = 0; j < 8; j++)
+		{
+			x.set(j, message[j + (8 * i)]);
+		}
+
+		cout << x << " ";
+
+		raw_message[i] = static_cast<unsigned char>(x.to_ulong());;
 	}
 
-	unsigned char a11 = static_cast<unsigned char>(a1.to_ulong());
-	unsigned char a22 = static_cast<unsigned char>(a2.to_ulong());
-	unsigned char a33 = static_cast<unsigned char>(a3.to_ulong());
+	cout << endl;
+	// null-terminate our message string
+	raw_message[MESSAGE_LENGTH] = NULL;
+	cout << "Message Received: " << raw_message << endl;
 
-	cout << "Message: " << a11 << a22 << a33 << endl;
 	return 0;
 }
 
@@ -130,6 +136,9 @@ void packet_handler(u_char *param, const struct pcap_pkthdr *header, const u_cha
 		s_b4 = (unsigned int)ih->saddr.byte4;
 
 		// if the traffic is originating from our "sender"...
+		// NOTE: this is the wront way to do this! In our example, traffic is 
+		// b/t 10.10.10.23 and 10.10.22. This is a lame way to focus on just what
+		// is coming from 10.10.10.22
 		if (s_b4 == 22)
 		{
 			if (total < message.size())
