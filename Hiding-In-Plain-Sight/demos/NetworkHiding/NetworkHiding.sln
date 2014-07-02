@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReadPcap", "ReadPcap\ReadPcap.vcxproj", "{DA935D14-1664-47BF-AE5C-4181249FF082}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WritePcap", "WritePcap\WritePcap.vcxproj", "{84B35412-0FC2-42EC-B67D-7B77F13B70F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA935D14-1664-47BF-AE5C-4181249FF082}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{DA935D14-1664-47BF-AE5C-4181249FF082}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DA935D14-1664-47BF-AE5C-4181249FF082}.Debug|x64.ActiveCfg = Debug|x64
+		{DA935D14-1664-47BF-AE5C-4181249FF082}.Debug|x64.Build.0 = Debug|x64
+		{DA935D14-1664-47BF-AE5C-4181249FF082}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{DA935D14-1664-47BF-AE5C-4181249FF082}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{DA935D14-1664-47BF-AE5C-4181249FF082}.Release|Win32.ActiveCfg = Release|Win32
+		{DA935D14-1664-47BF-AE5C-4181249FF082}.Release|Win32.Build.0 = Release|Win32
+		{DA935D14-1664-47BF-AE5C-4181249FF082}.Release|x64.ActiveCfg = Release|x64
+		{DA935D14-1664-47BF-AE5C-4181249FF082}.Release|x64.Build.0 = Release|x64
+		{84B35412-0FC2-42EC-B67D-7B77F13B70F3}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{84B35412-0FC2-42EC-B67D-7B77F13B70F3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{84B35412-0FC2-42EC-B67D-7B77F13B70F3}.Debug|x64.ActiveCfg = Debug|x64
+		{84B35412-0FC2-42EC-B67D-7B77F13B70F3}.Debug|x64.Build.0 = Debug|x64
+		{84B35412-0FC2-42EC-B67D-7B77F13B70F3}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{84B35412-0FC2-42EC-B67D-7B77F13B70F3}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{84B35412-0FC2-42EC-B67D-7B77F13B70F3}.Release|Win32.ActiveCfg = Release|Win32
+		{84B35412-0FC2-42EC-B67D-7B77F13B70F3}.Release|Win32.Build.0 = Release|Win32
+		{84B35412-0FC2-42EC-B67D-7B77F13B70F3}.Release|x64.ActiveCfg = Release|x64
+		{84B35412-0FC2-42EC-B67D-7B77F13B70F3}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
