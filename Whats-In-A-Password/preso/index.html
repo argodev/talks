@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Hiding in Plain Sight</title>
+		<title>What's in a Password?</title>
 		<meta name="description" content="Security Presentation for CodeStock 2014">
 		<meta name="author" content="Rob Gillen">
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -16,6 +16,16 @@
 			p { text-align: left; }
 			p.center { text-align: center;}
 			p.buffer { margin-top: 20px;}
+			.slides .footer{
+  				/* position:absolute; */
+  				padding-top: 100px;
+  				bottom: 0px;
+  				/*left: -50%; */
+  				font-size: 0.6em;
+			}
+			.smaller {
+				font-size: 0.75em;
+			}
 		</style>
 		<script>
 			if( window.location.search.match( /print-pdf/gi ) ) {
@@ -35,16 +45,178 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h2>Hiding in Plain Sight</h2>
+					<h2>So, What’s in a Password?</h2>
 					<br />
 					<p class="center buffer">Presented by <a href="http://rob.gillenfamily.net" target="_blank">Rob Gillen</a> / <a href="https://twitter.com/argodev" target="_blank">@argodev</a></p>
 					<p class="center buffer">This talk and related resources are available online: <a href="https://github.com/argodev/talks/" target="_blank">https://github.com/argodev/talks/</a></p>
 				</section>
 				<section>
+				<h2>Don't be Stupid</h2>
+					<p>The following presentation describes real attacks on real systems. Please note that most of the attacks described would be considered ILLEGAL if attempted on machines that you do not have explicit permission to test and attack. I assume no responsibility for any actions you perform based on the content of this presentation or subsequent conversations.</p>
+						<p>&nbsp;</p>
+				<p>Please remember this basic guideline: <strong><em>With knowledge comes responsibility</em></strong>.</p>
+				</section>
+				<section>
 					<h2>Disclaimer</h2>
 					<p>The content of this presentation represents my personal views and thoughts at the present time. I reserve the right to change my views and opinions at any time. This content is not endorsed by, or representative in any way of my employer nor is it intended to be a view into my work or a reflection on the type of work that I or my group performs. It is simply a hobby and personal interest and should be considered as such.</p>
 				</section>
-				<section data-background="resources/blacksheep.jpg">
+				<section>
+					<h1>Password Attacks</h1>
+					<p>A Year in Review</p>
+				</section>
+				<section>
+					<h2>Pixel Federation</h2>
+					<p>In December 2013, a breach of the web-based game community based in Slovakia exposed over 38,000 accounts which were promptly posted online. The breach included email addresses and unsalted MD5 hashed passwords, many of which were easily converted back to plain text.</p>
+					<div class="footer">http://haveibeenpwned.com/</div>
+				</section>
+				<section>
+					<h2>Vodafone</h2>
+					<p>In November 2013, Vodafone in Iceland suffered an attack attributed to the Turkish hacker collective "Maxn3y". The data was consequently publicly exposed and included user names, email addresses, social security numbers, SMS message, server logs and passwords from a variety of different internal sources.</p>
+					<div class="footer">http://haveibeenpwned.com/</div>
+				</section>
+				<section>
+					<h2>Adobe</h2>
+					<p>The big one. In October 2013, 153 million accounts were breached with each containing an internal ID, username, email, encrypted password and a password hint in plain text. The password cryptography was poorly done and many were quickly resolved back to plain text. The unencrypted hints also disclosed much about the passwords adding further to the risk that hundreds of millions of Adobe customers already faced.</p>
+					<div class="footer">http://haveibeenpwned.com/</div>
+				</section>
+				<section>
+					<h2>Twitter</h2>
+					<p>February 2013 - This week, we detected unusual access patterns that led to us identifying unauthorized access attempts to Twitter user data. We discovered one live attack and were able to shut it down in process moments later. However, our investigation has thus far indicated that the attackers may have had access to limited user information – usernames, email addresses, session tokens and encrypted/salted versions of passwords – for approximately 250,000 users.</p>
+					<div class="footer">https://blog.twitter.com/2013/keeping-our-users-secure</div>
+				</section>
+				<section>
+					<h2>More...</h2>
+					<ul>
+						<li>cvideo.co.il – 10/15/2013 – 3,339</li>
+						<ul>
+							<li<a href="" target="_blank">http://hackread.com/iranian-hackers-hack-israeli-job-site/</li>
+						</ul>
+						<li>penangmarathon.gov.my – 10/8/2013 – 1,387</li>
+						<ul>
+							<li><a href="" target="_blank">http://www.cyberwarnews.info/2013/10/07/45000-penang-marathon-participants-personal-details-leaked/</li>
+						</ul>
+						<li>tomsawyer.com – 10/6/2013 – 57,462</li>
+						<ul>
+							<li><a href="" target="_blank">http://www.cyberwarnews.info/2013/10/07/software-company-tom-sawyer-hacked-61000-vendors-accounts-leaked/</li>
+						</ul>
+						<li>ahashare.com – 10/3/2013 – 169,874</li>
+						<ul>
+							<li><a href="" target="_blank">http://www.cyberwarnews.info/2013/10/04/ahashare-com-hacked-complete-database-with-190-000-user-credentials-leaked/</li>
+						</ul>
+					</ul>
+					<div class="footer">https://shouldichangemypassword.com/all-sources.php</div>
+				</section>
+				<section>
+					<h2>More...</h2>
+					<ul>
+						<li>Unknown Israeli website – 7/30/2013 – 26,064</li>
+						<ul>
+							<li><a href="" target="_blank">http://hackread.com/opizzah-opisrael-phr0zenmyst-claims-to-leak-login-details-of-33895-israelis/</li>
+						</ul>
+						<li>UK emails – 7/17/2013 – 8,002</li>
+						<ul>
+							<li><a href="" target="_blank">http://www.techworm.in/2013/07/more-than-15000-emails-username-and.html</li>
+						</ul>
+						<li>UK emails (part 2) – 7/17/2013 – 7,514</li>
+						<ul>
+							<li><a href="" target="_blank">http://www.techworm.in/2013/07/more-than-15000-emails-username-and.html</li>
+						</ul>
+						<li>http://www.pakistanintelligence.com – 5/27/2013 – 75,942</li>
+						<ul>
+							<li><a href="" target="_blank">http://www.ehackingnews.com/2013/05/pakistan-intelligence-job-board-website.html</li>
+						</ul>
+					</ul>
+					<div class="footer">https://shouldichangemypassword.com/all-sources.php</div>
+				</section>
+				<section>
+					<h2>More...</h2>
+					<ul>
+						<li>McDonalds Taiwan – 3/27/2013 – 185,620</li>
+						<ul>
+							<li><a href="http://www.cyberwarnews.info/2013/03/28/official-mcdonalds-austria-taiwan-korea-hacked-over-200k-credentials-leaked/" target="_blank">http://www.cyberwarnews.info/2013/03/28/official-mcdonalds-austria-taiwan-korea-hacked-over-200k-credentials-leaked/</a></li>
+						</ul>
+						<li>karjera.ktu.lt – 3/14/2013 – 14,133</li>
+						<ul>
+							<li><a href="http://www.cyberwarnews.info/2013/03/14/14000-student-credentials-leaked-from-ktu-career-center-lithuania/" target="_blank">http://www.cyberwarnews.info/2013/03/14/14000-student-credentials-leaked-from-ktu-career-center-lithuania/</a></li>
+						</ul>
+						<li>avadas.de – 3/9/2013 – 3,344</li>
+						<ul>
+							<li><a href="" target="_blank">http://hackread.com/avast-germany-website-hacked-defaced-20000-user-accounts-leaked-by-maxney/</a>http://hackread.com/avast-germany-website-hacked-defaced-20000-user-accounts-leaked-by-maxney/</li>
+						</ul>
+						<li>angloplatinum.co.za – 3/5/2013 – 7,967</li>
+						<ul>
+							<li><a href="http://thehackernews.com/2013/03/worlds-largest-platinum-producer-hacked.html" target="_blank">http://thehackernews.com/2013/03/worlds-largest-platinum-producer-hacked.html</a></li>
+						</ul>
+					</ul>
+					<div class="footer">https://shouldichangemypassword.com/all-sources.php</div>
+				</section>
+				<section>
+					<h2>More...</h2>
+					<ul>
+						<li>angloplatinum.com – 3/5/2013 – 723</li>
+						<ul>
+							<li><a href="http://thehackernews.com/2013/03/worlds-largest-platinum-producer-hacked.html" target="_blank">http://thehackernews.com/2013/03/worlds-largest-platinum-producer-hacked.html</a></li>
+						</ul>
+						<li>Walla.co.il – 2/19/2013 – 531,526</li>
+						<ul>
+							<li><a href="http://www.haaretz.com/news/national/anonymous-activists-hack-into-600-000-israeli-email-accounts.premium-1.504093" target="_blank">http://www.haaretz.com/news/national/anonymous-activists-hack-into-600-000-israeli-email-accounts.premium-1.504093</a></li>
+						</ul>
+						<li>Bank Executives – 2/4/2013 – 4,596</li>
+						<ul>
+							<li><a href="http://www.zdnet.com/anonymous-posts-over-4000-u-s-bank-executive-credentials-7000010740/" target="_blank">http://www.zdnet.com/anonymous-posts-over-4000-u-s-bank-executive-credentials-7000010740/</a></li>
+						</ul>
+						<li>bee-network.co.za – 1/29/2013 – 81</li>
+						<ul>
+							<li><a href="" target="_blank">http://www.ehackingnews.com/2013/01/projectsunrise-team-ghostshell-leaked.html</a></li>
+						</ul>
+					</ul>
+					<div class="footer">https://shouldichangemypassword.com/all-sources.php</div>
+				</section>
+				<section>
+					<h2>More...</h2>
+					<ul>
+						<li>omni-id.com – 1/29/2013 – 1,151</li>
+						<ul>
+							<li><a href="http://www.ehackingnews.com/2013/01/projectsunrise-team-ghostshell-leaked.html" target="_blank">http://www.ehackingnews.com/2013/01/projectsunrise-team-ghostshell-leaked.html</a></li>
+						</ul>
+						<li>moolmans.com – 1/29/2013 – 117</li>
+						<ul>
+							<li><a href="http://www.ehackingnews.com/2013/01/projectsunrise-team-ghostshell-leaked.html" target="_blank">http://www.ehackingnews.com/2013/01/projectsunrise-team-ghostshell-leaked.html</a></li>
+						</ul>
+						<li>servicedesk.ufs.ac.za – 1/29/2013 – 3,952</li>
+						<ul>
+							<li><a href="http://www.ehackingnews.com/2013/01/projectsunrise-team-ghostshell-leaked.html" target="_blank">http://www.ehackingnews.com/2013/01/projectsunrise-team-ghostshell-leaked.html</a></li>
+						</ul>
+						<li>servicedesk.ufs.ac.za (part 2) – 1/29/2013 – 355</li>
+						<ul>
+							<li><a href="http://www.ehackingnews.com/2013/01/projectsunrise-team-ghostshell-leaked.html" target="_blank">http://www.ehackingnews.com/2013/01/projectsunrise-team-ghostshell-leaked.html</a></li>
+						</ul>
+					</ul>
+					<div class="footer">https://shouldichangemypassword.com/all-sources.php</div>
+				</section>
+				<section>
+					<h2>More...</h2>
+					<ul>
+						<li>westcol.co.za – 1/29/2013 – 99</li>
+						<ul>
+							<li><a href="http://www.ehackingnews.com/2013/01/projectsunrise-team-ghostshell-leaked.html" target="_blank">http://www.ehackingnews.com/2013/01/projectsunrise-team-ghostshell-leaked.html</a></li>
+						</ul>
+						<li>digital.postnet.co.za – 1/29/2013 – 45,245</li>
+						<ul>
+							<li><a href="http://www.ehackingnews.com/2013/01/projectsunrise-team-ghostshell-leaked.html" target="_blank">http://www.ehackingnews.com/2013/01/projectsunrise-team-ghostshell-leaked.html</a></li>
+						</ul>
+						<li>French Chamber of Commerce – 1/29/2013 – 515</li>
+						<ul>
+							<li class="smaller"><a href="http://news.softpedia.com/news/French-Chamber-of-Commerce-and-Industry-Portal-Hacked-by-Tunisian-Cyber-Army-324716.shtml" target="_top">http://news.softpedia.com/news/French-Chamber-of-Commerce-and-Industry-Portal-Hacked-by-Tunisian-Cyber-Army-324716.shtml</a></li>
+						</ul>
+					</ul>
+					<div class="footer">https://shouldichangemypassword.com/all-sources.php</div>
+				</section>
+				<section>
+					<h2>More...</h2>
+					<ul>
+					</ul>
+					<div class="footer">https://shouldichangemypassword.com/all-sources.php</div>
 				</section>
 				<section>
 					<h2>HTDCS</H2>
