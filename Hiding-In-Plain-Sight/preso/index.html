@@ -11,11 +11,20 @@
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/night.css" id="theme">
 		<link rel="stylesheet" href="lib/css/zenburn.css">
-		<link rel="stylesheet" href="css/fullscreen-img.css">
 		<style type="text/css">
 			p { text-align: left; }
 			p.center { text-align: center;}
 			p.buffer { margin-top: 20px;}
+			.slides .footer{
+  				/* position:absolute; */
+  				padding-top: 100px;
+  				bottom: 0px;
+  				/*left: -50%; */
+  				font-size: 0.6em;
+			}
+			.smaller {
+				font-size: 0.75em;
+			}			
 		</style>
 		<script>
 			if( window.location.search.match( /print-pdf/gi ) ) {
@@ -38,7 +47,10 @@
 					<h2>Hiding in Plain Sight</h2>
 					<br />
 					<p class="center buffer">Presented by <a href="http://rob.gillenfamily.net" target="_blank">Rob Gillen</a> / <a href="https://twitter.com/argodev" target="_blank">@argodev</a></p>
-					<p class="center buffer">This talk and related resources are available online: <a href="https://github.com/argodev/talks/" target="_blank">https://github.com/argodev/talks/</a></p>
+					<div class="footer" style="padding-top: 100px;">
+						<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="resources/cc.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+						<p class="center buffer">This talk and related resources are available online: <a href="https://github.com/argodev/talks/" target="_blank">https://github.com/argodev/talks/</a></p>
+					</div>
 				</section>
 				<section>
 					<h2>Disclaimer</h2>
@@ -112,10 +124,10 @@
 					</ul>
 				</section>
 				<section>
-					<img src="resources/webpage01.png" class="stretch"/>
+					<img src="resources/webpage01.png"/>
 				</section>
 				<section>
-					<img src="resources/viewstate01.png" class="stretch"/>
+					<img src="resources/viewstate01.png"/>
 				</section>
 				<section>
 					<img src="resources/viewstate02.png" class="stretch"/>
@@ -199,19 +211,19 @@ a2.twimg.com
 						</ul>
 				</section>
 				<section>
-					<img src="resources/office01.png" class="stretch"/>
+					<img src="resources/office01.png"/>
 				</section>
 				<section>
-					<img src="resources/office02.png" class="stretch"/>
+					<img src="resources/office02.png"/>
 				</section>
 				<section>
-					<img src="resources/office03.png" class="stretch"/>
+					<img src="resources/office03.png"/>
 				</section>
 				<section>
-					<img src="resources/office04.png" class="stretch"/>
+					<img src="resources/office04.png"/>
 				</section>
 				<section>
-					<img src="resources/office05.png" class="stretch"/>
+					<img src="resources/office05.png"/>
 				</section>
 				<section>
 					<img src="resources/office06.png" class="stretch"/>
@@ -286,7 +298,7 @@ a2.twimg.com
 					<img src="resources/lsb02.png" class="stretch"/>
 				</section>
 				<section>
-					<img src="resources/tcpjoke.png" style="height:100%"/>
+					<img src="resources/tcpjoke.png"/>
 				</section>
 				<section>
 					<h2>Network Protocol Abuse</h2>
@@ -348,8 +360,6 @@ a2.twimg.com
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-					// Syntax highlight for <code> elements
-          			{ src: 'lib/js/fullscreen-img.js' }
 				]
 			});
 		</script>
