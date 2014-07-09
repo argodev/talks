@@ -6,8 +6,25 @@
 - talk about the dictionary file: \demos\winhash\RockYou-MostPopular500000PassesLetters_less50000.dic
 - talk about the rules file: \demos\winhash\rules\d3ad0ne.rule
 - run the crack: 
--- cd \demos\winhash\
--- oclHashcat64.exe -m 1000 -a 0 windows.hash RockYou-MostPopular500000PassesLetters_less50000.dic -r rules\d3ad0ne.rule
+  - NOTE: this takes around 45 seconds to complete on my laptop
+  - cd \demos\winhash\
+  - oclHashcat64.exe -m 1000 -a 0 windows.hash RockYou-MostPopular500000PassesLetters_less50000.dic -r rules\d3ad0ne.rule
+    - -m 1000: Hash Type = NTLM
+    - -a 0: Attack Mode = Straight
+    - hash file to crack
+    - dictionary file to use
+    - -r rule file to use
+
+### Password List Statistics Demo
+- Show the password list: \demos\stats\pwds.csv
+  - file was taken from an online dump of passwords
+  - an attempt has been made to remove or alter pwds that clearly included someones first and last name while not changing the length or complexity
+  - in some cases, names were generated to replace real names
+  - any similarity to real people is purely coincidental
+- run the stats tool:
+  - cd \demos\stats
+  - python statsgen.py pwds.csv
+
 
 
 # Hiding in Plain Sight [![Build Status](https://travis-ci.org/hakimel/reveal.js.png?branch=master)](https://travis-ci.org/hakimel/reveal.js)
