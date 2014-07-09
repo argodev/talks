@@ -1,3 +1,15 @@
+
+## Speaker Notes:
+
+### Cracking Windows Hash Demo
+- Show hash file: \demos\winhash\windows.hash
+- talk about the dictionary file: \demos\winhash\RockYou-MostPopular500000PassesLetters_less50000.dic
+- talk about the rules file: \demos\winhash\rules\d3ad0ne.rule
+- run the crack: 
+-- cd \demos\winhash\
+-- oclHashcat64.exe -m 1000 -a 0 windows.hash RockYou-MostPopular500000PassesLetters_less50000.dic -r rules\d3ad0ne.rule
+
+
 # Hiding in Plain Sight [![Build Status](https://travis-ci.org/hakimel/reveal.js.png?branch=master)](https://travis-ci.org/hakimel/reveal.js)
 
 A presentation that I have given a handful of times on the topic of security, normalcy, and how easy it is to hide your activities amongst the "noise" of a typical computer environment.
