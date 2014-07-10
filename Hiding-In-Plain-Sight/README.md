@@ -1,4 +1,4 @@
-# Hiding in Plain Sight [![Build Status](https://travis-ci.org/hakimel/reveal.js.png?branch=master)](https://travis-ci.org/hakimel/reveal.js)
+# Hiding in Plain Sight
 
 A presentation that I have given a handful of times on the topic of security, normalcy, and how easy it is to hide your activities amongst the "noise" of a typical computer environment.
 
@@ -7,7 +7,7 @@ A presentation that I have given a handful of times on the topic of security, no
 - East Tennessee Cyber Security Summit
 
 ## Significant Changes
-- Added some stego examples and re-ordered the talk. Also, removed the demo of bypassing the IDS.
+- Added some stego examples and re-ordered the talk. Also, removed the demo of bypassing the IDS and replaced it with a video clip.
 - Original Presentation
 
 
@@ -19,5 +19,3 @@ The talks I give are never entirely my own. I have ideas, I may put them togethe
 ## License
 
 This work is licensed under a [Creative Commons Attribution 3.0 License](http://creativecommons.org/licenses/by/3.0/)
-
-[Rob Gillen](http://rob.gillenfamily.net)
