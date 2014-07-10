@@ -74,8 +74,12 @@ int main(int argc, char **argv)
 
 	for (int i = 0; i < MESSAGE_LENGTH; i++)
 	{
+		// create a bitset, generated from the bits in the byte
+		// of the ith character of raw_message
 		bitset<8> x(raw_message[i]);
 
+		// append to single/flat array of bits 
+		// representing entire message
 		for (int j = 0; j < 8; j++)
 		{
 			message[j + (8 * i)] = x[j];
@@ -104,7 +108,6 @@ int main(int argc, char **argv)
 		fprintf(stderr, "\nUnable to open the input file %s.\n", argv[1]);
 		return -1;
 	}
-
 
 	/* Open the dump file */
 	dumpfile = pcap_dump_open(fp, argv[2]);
@@ -147,6 +150,7 @@ void packet_handler(u_char *dumpfile, const struct pcap_pkthdr *header, const u_
 		// is coming from 10.10.10.22
 		if (s_b4 == 22)
 		{
+			// until we reach the end of our message...
 			if (total < message.size())
 			{
 				// we are going to cheat here. Our client was setting outbound packets
