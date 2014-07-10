@@ -19,5 +19,3 @@ The talks I give are never entirely my own. I have ideas, I may put them togethe
 ## License
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/)
-
-[Rob Gillen](http://rob.gillenfamily.net)
