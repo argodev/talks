@@ -16,6 +16,8 @@ The talks I give are never entirely my own. I have ideas, I may put them togethe
 
 - The presentation software, reveal.js is developed by Hakim El Hattab and is Copyright (C) 2014 Hakim El Hattab, http://hakim.se. You can obtain a copy yourself [from his github repo](https://github.com/hakimel/reveal.js).
 
+- The original image used in the LSB Stego demo is from [Free Big Pictures.com](http://freebigpictures.com/)
+
 ## License
 
 This work is licensed under a [Creative Commons Attribution 3.0 License](http://creativecommons.org/licenses/by/3.0/)
