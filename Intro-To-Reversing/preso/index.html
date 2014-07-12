@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Introduction to Reversing</title>
+		<meta name="description" content="Security Presentation for DevLink 2014">
+		<meta name="author" content="Rob Gillen">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="css/fullscreen-img.css">
+
+		<style type="text/css">
+			p { text-align: left; }
+			p.center { text-align: center;}
+			p.buffer { margin-top: 20px;}
+			.slides .footer{
+  				/* position:absolute; */
+  				padding-top: 100px;
+  				bottom: 0px;
+  				/*left: -50%; */
+  				font-size: 0.6em;
+			}
+			.smaller {
+				font-size: 0.75em;
+			}
+		</style>
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Introduction To Reversing</h2>
+					<br />
+					<p class="center buffer">Presented by <a href="http://rob.gillenfamily.net" target="_blank">Rob Gillen</a> / <a href="https://twitter.com/argodev" target="_blank">@argodev</a></p>
+					<div class="footer" style="padding-top: 100px;">
+						<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="resources/cc.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+						<p class="center buffer">This talk and related resources are available online: <a href="https://github.com/argodev/talks/" target="_blank">https://github.com/argodev/talks/</a></p>
+					</div>
+				</section>
+				<section>
+				<h2>Don't be Stupid</h2>
+					<p>The following presentation describes real attacks on real systems. Please note that most of the attacks described would be considered ILLEGAL if attempted on machines that you do not have explicit permission to test and attack. I assume no responsibility for any actions you perform based on the content of this presentation or subsequent conversations.</p>
+						<p>&nbsp;</p>
+				<p>Please remember this basic guideline: <strong><em>With knowledge comes responsibility</em></strong>.</p>
+				</section>
+				<section>
+					<h2>Disclaimer</h2>
+					<p>The content of this presentation represents my personal views and thoughts at the present time. I reserve the right to change my views and opinions at any time. This content is not endorsed by, or representative in any way of my employer nor is it intended to be a view into my work or a reflection on the type of work that I or my group performs. It is simply a hobby and personal interest and should be considered as such.</p>
+				</section>
+				<section>
+					<h1></h1>
+					<p></p>
+				</section>
+				<section>
+					<h2></h2>
+					<p></p>
+					<div class="footer"><a href="" target="_blank"></a></div>
+				</section>
+
+				<section>
+					<h2>References</h2>
+					<ul>
+						<li><a href="" target="_blank"></a></li>
+					</ul>
+					<div class="footer"></div>
+				</section>
+				<section>
+					<h2>Questions/Contact</h2>
+					<p>Rob Gillen<br />
+						<a href="mailto:rob@gillenfamily.net">rob@gillenfamily.net</a><br />
+						<a href="http://rob.gillenfamily.net" target="_blank">http://rob.gillenfamily.net</a><br />
+						<a href="https://twitter.com/argodev" target="_blank">@argodev</a><br />
+					</p>
+					<p>&nbsp;</p>
+					<p class="buffer">This talk and related resources are available online: <a href="https://github.com/argodev/talks/" target="_blank">https://github.com/argodev/talks/</a></p>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
+				margin: 0.01,
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+				]
+			});
+		</script>
+	</body>
+</html>
