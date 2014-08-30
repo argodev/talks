@@ -145,7 +145,7 @@ void packet_handler(u_char *dumpfile, const struct pcap_pkthdr *header, const u_
 		s_b4 = (unsigned int)ih->saddr.byte4;
 
 		// if the traffic is originating from our "sender"...
-		// NOTE: this is the wront way to do this! In our example, traffic is 
+		// NOTE: this is the wrong way to do this! In our example, traffic is 
 		// b/t 10.10.10.23 and 10.10.22. This is a lame way to focus on just what
 		// is coming from 10.10.10.22
 		if (s_b4 == 22)
